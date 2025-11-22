@@ -101,11 +101,10 @@ question,options,answer,multiple
 ## 🛠️ Estrutura do Projeto
 
 ```
-aws-simulator-dva-c02/
+aws-simulator3
 │
 ├── app.py                 # Aplicação principal
 ├── .env                   # Variáveis de ambiente (não versionado)
-├── .env.example           # Exemplo de configuração
 ├── requirements.txt       # Dependências Python
 ├── README.md             # Documentação
 └── .gitignore            # Arquivos ignorados pelo Git
@@ -137,23 +136,5 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 5. Abrir um Pull Request
 
 ## 📧 Contato
-
-**Ary Ribeiro**
-- Email: aryribeiro@gmail.com
-
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
-
-## 🎯 Roadmap
-
-- [ ] Adicionar mais questões ao banco de dados
-- [ ] Implementar histórico de simulados
-- [ ] Criar modo de estudo por tópicos
-- [ ] Adicionar explicações detalhadas para cada questão
-- [ ] Implementar sistema de ranking
-- [ ] Desenvolver versão mobile responsiva
-
----
 
 Por **Ary Ribeiro**: aryribeiro@gmail.com
