@@ -1,55 +1,159 @@
-Obs.: caso o app esteja no modo "sleeping" (dormindo) ao entrar, basta clicar no botão que estará disponível e aguardar, para ativar o mesmo. 
-![print](https://github.com/user-attachments/assets/22fde294-0bbc-45b9-9d03-9dc1aa32d629)
+# 🔖 AWS Simulator DVA-C02
 
-# AWS Simulator (SAA-C03)
+Aplicação web interativa para simulados da certificação **AWS Developer Associate (DVA-C02)**, desenvolvida com Streamlit.
 
-Um web app de simulado para a certificação AWS SAA-C03 (2025), construído com Python e Streamlit.
-Permite carregar perguntas de um CSV hospedado no Google Drive, controlar tempo de prova com cronômetro fixo no canto superior direito, e exibir correção automática ao final.
+![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
+![License](https://img.shields.io/badge/License-MIT-green.svg)
 
-## Funcionalidades
+## 📋 Sobre o Projeto
 
-- 65 perguntas baseadas no exame AWS SAA-C03 (2025).
-- Timer de 130 minutos exibido no canto superior direito da tela.
-- Suporte a perguntas de escolha única e múltipla.
-- Correção automática ao final, com destaque visual para respostas erradas.
-- Visual limpo e focado, com elementos do Streamlit ocultos via CSS.
-- Compatível com computadores (sugestão de uso).
+Simulador completo para preparação do exame AWS Developer Associate (DVA-C02) com 65 questões, timer de 130 minutos e correção automática.
 
-## Pré-requisitos
+### ✨ Funcionalidades
+
+- ⏱️ **Timer em tempo real** - Contador regressivo de 130 minutos (tempo oficial do exame)
+- 📊 **65 Questões** - Simulado completo baseado no exame real
+- ✅ **Múltipla escolha** - Suporte para questões de resposta única e múltipla
+- 🎯 **Correção automática** - Feedback imediato após finalização
+- 📈 **Métricas de desempenho** - Percentual de acertos e quantidade
+- ❌ **Identificação visual** - Marcação visual das questões erradas
+- 🔄 **Carregamento dinâmico** - Questões carregadas do Google Drive via CSV
+
+## 🚀 Tecnologias Utilizadas
+
+- **Python 3.8+**
+- **Streamlit** - Framework para aplicações web
+- **Pandas** - Manipulação de dados
+- **Requests** - Requisições HTTP
+- **Python-dotenv** - Gerenciamento de variáveis de ambiente
+
+## 📦 Instalação
+
+### Pré-requisitos
 
 - Python 3.8 ou superior
-- Conta Google Drive para armazenar o CSV
-- Variável de ambiente GOOGLE_DRIVE_CSV_URL com o link direto do CSV exportado
+- pip (gerenciador de pacotes Python)
 
-## Instalação
+### Passo a passo
 
-1. Clone este repositório:
+1. **Clone o repositório**
+```bash
+git clone https://github.com/aryribeiro/aws-simulator3.git
+cd aws-simulator3
+```
 
-git clone https://github.com/aryribeiro/simulator-aws.git
-cd simulator-aws
+2. **Crie um ambiente virtual (recomendado)**
+```bash
+python -m venv venv
 
-2. (Opcional) Crie e ative um ambiente virtual:
+# Windows
+venv\Scripts\activate
 
-python -m venv .venv
-source .venv/bin/activate      # Linux/macOS
-.venv\Scripts\activate       # Windows
+# Linux/Mac
+source venv/bin/activate
+```
 
-3. Instale as dependências:
-
+3. **Instale as dependências**
+```bash
 pip install -r requirements.txt
+```
 
-4. Crie um arquivo `.env` com a seguinte variável:
+4. **Configure as variáveis de ambiente**
 
-GOOGLE_DRIVE_CSV_URL="https://drive.google.com/uc?export=download&id=SEU_ID_DO_ARQUIVO"
+Crie um arquivo `.env` na raiz do projeto:
+```env
+GOOGLE_DRIVE_CSV_URL=https://drive.google.com/uc?export=download&id=SEU_ID_AQUI
+```
 
-## Como usar
-
-Execute o app com o comando abaixo e acesse no navegador:
-
+5. **Execute a aplicação**
+```bash
 streamlit run app.py
-e o arquivo manage_questions.py serve para adicionar perguntas e respostas no arquivo questions.csv.. após isso, basta fazer upload do csv para o Google Drive e usar o web app em ambiente local ou em produção.
+```
 
-## Autor
+A aplicação estará disponível em `http://localhost:8501`
 
-- Ary Ribeiro
-- Contato: aryribeiro@gmail.com
+## 📄 Estrutura do Arquivo CSV
+
+O arquivo CSV deve seguir o formato:
+
+```csv
+question,options,answer,multiple
+"Qual serviço AWS...","['A) EC2', 'B) Lambda', 'C) S3', 'D) RDS']","['B) Lambda']",false
+"Selecione os serviços...","['A) DynamoDB', 'B) Aurora', 'C) RDS']","['A) DynamoDB', 'B) Aurora']",true
+```
+
+### Campos obrigatórios:
+- **question**: Texto da pergunta
+- **options**: Lista de opções no formato JSON
+- **answer**: Lista com resposta(s) correta(s) no formato JSON
+- **multiple**: `true` para múltipla escolha, `false` para única escolha
+
+## 🎮 Como Usar
+
+1. Acesse a aplicação no navegador
+2. Clique em **"Iniciar Simulado"**
+3. Responda todas as 65 questões
+4. Clique em **"Finalizar Simulado"**
+5. Visualize sua nota e questões erradas
+6. Pressione **F5** para reiniciar
+
+## 🛠️ Estrutura do Projeto
+
+```
+aws-simulator-dva-c02/
+│
+├── app.py                 # Aplicação principal
+├── .env                   # Variáveis de ambiente (não versionado)
+├── .env.example           # Exemplo de configuração
+├── requirements.txt       # Dependências Python
+├── README.md             # Documentação
+└── .gitignore            # Arquivos ignorados pelo Git
+```
+
+## 📝 Arquivo requirements.txt
+
+```txt
+streamlit>=1.28.0
+pandas>=2.0.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+```
+
+## 🔒 Segurança
+
+- Nunca commite o arquivo `.env` com credenciais
+- Use variáveis de ambiente para dados sensíveis
+- Mantenha o arquivo `.gitignore` atualizado
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Sinta-se à vontade para:
+
+1. Fazer fork do projeto
+2. Criar uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit suas mudanças (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abrir um Pull Request
+
+## 📧 Contato
+
+**Ary Ribeiro**
+- Email: aryribeiro@gmail.com
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 🎯 Roadmap
+
+- [ ] Adicionar mais questões ao banco de dados
+- [ ] Implementar histórico de simulados
+- [ ] Criar modo de estudo por tópicos
+- [ ] Adicionar explicações detalhadas para cada questão
+- [ ] Implementar sistema de ranking
+- [ ] Desenvolver versão mobile responsiva
+
+---
+
+Por **Ary Ribeiro**: aryribeiro@gmail.com
