@@ -1,6 +1,6 @@
-# 🔖 AWS Simulator DVA-C02
+<img width="1007" height="727" alt="image" src="https://github.com/user-attachments/assets/ce694608-6b77-45a1-a972-1cf47f91b5af" />
 
-Aplicação web interativa para simulados da certificação **AWS Developer Associate (DVA-C02)**, desenvolvida com Streamlit.
+Aplicação web interativa para simulados da certificação **AWS Developer Associate (DVA-C02)**, desenvolvida em Python com Streamlit.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.28+-red.svg)
