@@ -12,13 +12,13 @@ Simulador completo para preparação do exame AWS Developer Associate (DVA-C02) 
 
 ### ✨ Funcionalidades
 
-- ⏱️ **Timer em tempo real** - Contador regressivo de 130 minutos (tempo oficial do exame)
+- ⏱️ **Timer em tempo real** - Contador regressivo de 130 minutos (tempo oficial do exame), com encerramento automático
+- 🍃 **Dois modos** - Com tempo (como no exame real) ou sem limite de tempo
 - 📊 **65 Questões** - Simulado completo baseado no exame real
 - ✅ **Múltipla escolha** - Suporte para questões de resposta única e múltipla
-- 🎯 **Correção automática** - Feedback imediato após finalização
-- 📈 **Métricas de desempenho** - Percentual de acertos e quantidade
-- ❌ **Identificação visual** - Marcação visual das questões erradas
-- 🔄 **Carregamento dinâmico** - Questões carregadas do Google Drive via CSV
+- 🎯 **Correção imediata** - Cada resposta é travada e corrigida na hora, com destaque em verde/vermelho
+- 📈 **Métricas de desempenho** - Percentual de acertos, quantidade e barra de progresso
+- 🔄 **Carregamento dinâmico** - Questões carregadas do Google Drive via CSV, com fallback local
 
 ## 🚀 Tecnologias Utilizadas
 
@@ -79,8 +79,8 @@ O arquivo CSV deve seguir o formato:
 
 ```csv
 question,options,answer,multiple
-"Qual serviço AWS...","['A) EC2', 'B) Lambda', 'C) S3', 'D) RDS']","['B) Lambda']",false
-"Selecione os serviços...","['A) DynamoDB', 'B) Aurora', 'C) RDS']","['A) DynamoDB', 'B) Aurora']",true
+"Qual serviço AWS...","[""EC2"", ""Lambda"", ""S3"", ""RDS""]","[""Lambda""]",False
+"Selecione os serviços...","[""DynamoDB"", ""Aurora"", ""RDS""]","[""DynamoDB"", ""Aurora""]",True
 ```
 
 ### Campos obrigatórios:
@@ -101,9 +101,10 @@ question,options,answer,multiple
 ## 🛠️ Estrutura do Projeto
 
 ```
-aws-simulator3
+aws-simulator3/
 │
 ├── app.py                 # Aplicação principal
+├── manage_questions.py    # CRUD local de perguntas no questions.csv
 ├── .env                   # Variáveis de ambiente (não versionado)
 ├── requirements.txt       # Dependências Python
 ├── README.md             # Documentação
@@ -113,10 +114,10 @@ aws-simulator3
 ## 📝 Arquivo requirements.txt
 
 ```txt
-streamlit>=1.28.0
-pandas>=2.0.0
-requests>=2.31.0
-python-dotenv>=1.0.0
+streamlit==1.47.1
+pandas==2.3.1
+requests==2.32.4
+python-dotenv==1.1.1
 ```
 
 ## 🔒 Segurança
@@ -136,5 +137,23 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 5. Abrir um Pull Request
 
 ## 📧 Contato
+
+**Ary Ribeiro**
+- Email: aryribeiro@gmail.com
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
+
+## 🎯 Roadmap
+
+- [ ] Adicionar mais questões ao banco de dados
+- [ ] Implementar histórico de simulados
+- [ ] Criar modo de estudo por tópicos
+- [ ] Adicionar explicações detalhadas para cada questão
+- [ ] Implementar sistema de ranking
+- [ ] Desenvolver versão mobile responsiva
+
+---
 
 Por **Ary Ribeiro**: aryribeiro@gmail.com
